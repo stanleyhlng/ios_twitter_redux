@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Stanley Ng. All rights reserved.
 //
 
+#import "ComposeViewController.h"
 #import "MenuViewController.h"
 #import "HomeTimelineViewController.h"
 #import "MentionsTimelineViewController.h"
@@ -17,8 +18,13 @@
 @interface MenuViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *menuItems;
+@property (strong, nonatomic) HomeTimelineViewController *homeTimelineViewController;
+@property (strong, nonatomic) MentionsTimelineViewController *mentionsTimelineViewController;
+@property (strong, nonatomic) UserTimelineViewController *userTimelineViewController;
 
+- (void)presentCompose;
 - (void)setupTableView;
+- (void)setupTableViewCell;
 @end
 
 @implementation MenuViewController
@@ -29,6 +35,15 @@
     if (self) {
         // Custom initialization
         self.menuItems = @[@"Profile", @"Timelines", @"Mentions", @"Logout"];
+        
+        self.homeTimelineViewController = [[HomeTimelineViewController alloc] initWithNibName:@"HomeTimelineViewController" bundle:nil];
+        self.homeTimelineViewController.delegate = self;
+        
+        self.mentionsTimelineViewController = [[MentionsTimelineViewController alloc] initWithNibName:@"MentionsTimelineViewController" bundle:nil];
+        self.mentionsTimelineViewController.delegate = self;
+
+        self.userTimelineViewController = [[UserTimelineViewController alloc] initWithNibName:@"UserTimelineViewController" bundle:nil];
+        self.userTimelineViewController.delegate = self;
     }
     return self;
 }
@@ -47,7 +62,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setupTableView
+- (void)presentCompose
+{
+    ComposeViewController *vc = [[ComposeViewController alloc] init];
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+    
+    [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)setupTableView
 {
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -55,7 +78,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
-- (void) setupTableViewCell
+- (void)setupTableViewCell
 {
     UINib *nib = [UINib nibWithNibName:@"UserTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"UserTableViewCell"];
@@ -116,27 +139,26 @@
 
     if (indexPath.section == 1) {
         UINavigationController *nvc;
-        UIViewController *vc;
         
         switch (indexPath.row) {
             case 0:
-                vc = [[UserTimelineViewController alloc] initWithNibName:@"UserTimelineViewController" bundle:nil];
+                nvc = [[UINavigationController alloc] initWithRootViewController:self.userTimelineViewController];
                 break;
             case 1:
-                vc = [[HomeTimelineViewController alloc] initWithNibName:@"HomeTimelineViewController" bundle:nil];
+                nvc = [[UINavigationController alloc] initWithRootViewController:self.homeTimelineViewController];
                 break;
             case 2:
-                vc = [[MentionsTimelineViewController alloc] initWithNibName:@"MentionsTimelineViewController" bundle:nil];
+                nvc = [[UINavigationController alloc] initWithRootViewController:self.mentionsTimelineViewController];
                 break;
         }
         
-        if (vc) {
-            nvc = [[UINavigationController alloc] initWithRootViewController:vc];
+        if (nvc) {
             [self openContentNavigationController:nvc];
         }
         else {
             [[self mainSlideMenu] closeLeftMenu];
         }
+
     } else {
         [[self mainSlideMenu] closeLeftMenu];
     }
@@ -155,4 +177,29 @@
     }
     return height;
 }
+
+# pragma HomeTimelineViewControllerDelegate mehtods
+
+- (void)composeFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message
+{
+    NSLog(@"compse from home timeline view");
+    [self presentCompose];
+}
+
+# pragma MentionsTimelineViewControllerDelegate mehtods
+
+- (void)composeFromMentionsTimelineView:(MentionsTimelineViewController *)controller message:(NSString *)message
+{
+    NSLog(@"compse from mentions timeline view");
+    [self presentCompose];
+}
+
+# pragma UserTimelineViewControllerDelegate mehtods
+
+- (void)composeFromUserTimelineView:(UserTimelineViewController *)controller message:(NSString *)message
+{
+    NSLog(@"compse from user timeline view");
+    [self presentCompose];
+}
+
 @end

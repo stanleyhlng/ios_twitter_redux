@@ -7,7 +7,13 @@
 //
 
 #import "AMSlideMenuLeftTableViewController.h"
+#import "HomeTimelineViewController.h"
+#import "MentionsTimelineViewController.h"
+#import "UserTimelineViewController.h"
 
-@interface MenuViewController : AMSlideMenuLeftTableViewController
+@interface MenuViewController : AMSlideMenuLeftTableViewController<
+    HomeTimelineViewControllerDelegate,
+    MentionsTimelineViewControllerDelegate,
+    UserTimelineViewControllerDelegate>
 
 @end

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "AVHexColor.h"
 
 @implementation AppDelegate
 
@@ -15,6 +16,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    [self customizeStatusBar];
+    [self customizeNavBarAppearance];
     [self customizeWindow];
     
     return YES;
@@ -45,6 +48,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)customizeStatusBar
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+}
+
+- (void)customizeNavBarAppearance
+{
+    id navigationBarAppearance = [UINavigationBar appearance];
+    [navigationBarAppearance setTitleTextAttributes:
+     @{
+       NSForegroundColorAttributeName:[UIColor whiteColor],
+       NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0f]
+       }];
+    [navigationBarAppearance setTintColor:[AVHexColor colorWithHexString:@"#ffffff"]];
+    [navigationBarAppearance setBarTintColor:[AVHexColor colorWithHexString:@"#55acee"]];
 }
 
 - (void)customizeWindow

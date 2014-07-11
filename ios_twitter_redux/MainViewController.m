@@ -40,7 +40,18 @@
 
 - (NSIndexPath *)initialIndexPathForLeftMenu
 {
-    return [NSIndexPath indexPathForRow:0 inSection:1];
+    return [NSIndexPath indexPathForRow:1 inSection:1];
+}
+
+- (void)configureLeftMenuButton:(UIButton *)button
+{
+    UIImage *image = [[UIImage imageNamed:@"icon-menu"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+
+    [button setImage:image forState:UIControlStateNormal];
+    [button setImage:image forState:UIControlStateHighlighted];
+
+    button.frame = CGRectMake(0, 0, 30, 30);
+    button.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 @end

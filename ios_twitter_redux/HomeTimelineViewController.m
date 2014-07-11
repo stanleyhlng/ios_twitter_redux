@@ -9,6 +9,8 @@
 #import "HomeTimelineViewController.h"
 
 @interface HomeTimelineViewController ()
+- (void)customizeRightBarButton;
+- (void)handleCompose;
 
 @end
 
@@ -28,12 +30,36 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self customizeRightBarButton];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)customizeRightBarButton
+{
+    UIImage *image = [[UIImage imageNamed:@"icon-compose"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    UIButton *button = [[UIButton alloc] init];
+
+    button.frame = CGRectMake(0, 0, 30, 30);
+    button.contentMode = UIViewContentModeScaleAspectFit;
+
+    [button setImage:image forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(handleCompose) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *barButtonItem =
+    [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void)handleCompose
+{
+    NSLog(@"handleCompose");
+    [self.delegate composeFromHomeTimelineView:self message:@""];
 }
 
 @end

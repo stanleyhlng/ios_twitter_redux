@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class UserTimelineViewController;
+
+@protocol UserTimelineViewControllerDelegate <NSObject>
+- (void)composeFromUserTimelineView:(UserTimelineViewController *)controller message:(NSString *)message;
+
+@end
+
 @interface UserTimelineViewController : UIViewController
+@property (weak, nonatomic) id <UserTimelineViewControllerDelegate> delegate;
 
 @end
