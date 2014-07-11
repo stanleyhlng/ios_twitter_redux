@@ -22,7 +22,11 @@
 @property (strong, nonatomic) MentionsTimelineViewController *mentionsTimelineViewController;
 @property (strong, nonatomic) UserTimelineViewController *userTimelineViewController;
 
-- (void)presentCompose;
+- (void)handleCompose;
+- (void)handleHomeTimeline;
+- (void)handleLogout;
+- (void)handleMentionsTimeline;
+- (void)handleUserTimeline;
 - (void)setupTableView;
 - (void)setupTableViewCell;
 @end
@@ -62,12 +66,40 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)presentCompose
+- (void)handleCompose
 {
+    NSLog(@"handle compose");
+    
     ComposeViewController *vc = [[ComposeViewController alloc] init];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     [self presentViewController:nvc animated:YES completion:nil];
+}
+
+- (void)handleHomeTimeline
+{
+    NSLog(@"handle home timeline");
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.homeTimelineViewController];
+    [self openContentNavigationController:nvc];
+}
+
+- (void)handleLogout
+{
+    NSLog(@"handle logout");
+}
+
+- (void)handleMentionsTimeline
+{
+    NSLog(@"handle mentions timeline");
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.mentionsTimelineViewController];
+    [self openContentNavigationController:nvc];
+}
+
+- (void)handleUserTimeline
+{
+    NSLog(@"handle user timeline");
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.userTimelineViewController];
+    [self openContentNavigationController:nvc];
 }
 
 - (void)setupTableView
@@ -138,27 +170,27 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     if (indexPath.section == 1) {
-        UINavigationController *nvc;
-        
         switch (indexPath.row) {
             case 0:
-                nvc = [[UINavigationController alloc] initWithRootViewController:self.userTimelineViewController];
+                // User Timeline
+                [self handleUserTimeline];
                 break;
             case 1:
-                nvc = [[UINavigationController alloc] initWithRootViewController:self.homeTimelineViewController];
+                // Home Timeline
+                [self handleHomeTimeline];
                 break;
             case 2:
-                nvc = [[UINavigationController alloc] initWithRootViewController:self.mentionsTimelineViewController];
+                // Mentions Timeline
+                [self handleMentionsTimeline];
                 break;
+            case 3:
+                // Logout
+                [self handleLogout];
+                break;
+            default:
+                // Unknown
+                [[self mainSlideMenu] closeLeftMenu];
         }
-        
-        if (nvc) {
-            [self openContentNavigationController:nvc];
-        }
-        else {
-            [[self mainSlideMenu] closeLeftMenu];
-        }
-
     } else {
         [[self mainSlideMenu] closeLeftMenu];
     }
@@ -183,7 +215,7 @@
 - (void)composeFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message
 {
     NSLog(@"compse from home timeline view");
-    [self presentCompose];
+    [self handleCompose];
 }
 
 # pragma MentionsTimelineViewControllerDelegate mehtods
@@ -191,7 +223,7 @@
 - (void)composeFromMentionsTimelineView:(MentionsTimelineViewController *)controller message:(NSString *)message
 {
     NSLog(@"compse from mentions timeline view");
-    [self presentCompose];
+    [self handleCompose];
 }
 
 # pragma UserTimelineViewControllerDelegate mehtods
@@ -199,7 +231,7 @@
 - (void)composeFromUserTimelineView:(UserTimelineViewController *)controller message:(NSString *)message
 {
     NSLog(@"compse from user timeline view");
-    [self presentCompose];
+    [self handleCompose];
 }
 
 @end
