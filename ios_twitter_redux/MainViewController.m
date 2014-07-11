@@ -51,6 +51,7 @@
     [button setImage:image forState:UIControlStateHighlighted];
 
     button.frame = CGRectMake(0, 0, 30, 30);
+    button.imageEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4);
     button.contentMode = UIViewContentModeScaleAspectFit;
 }
 
