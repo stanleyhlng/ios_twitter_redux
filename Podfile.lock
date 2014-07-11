@@ -18,6 +18,7 @@ PODS:
   - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - AMSlideMenu (1.5.3)
   - AVHexColor (1.2.0)
   - BDBOAuth1Manager (1.2.1):
     - AFNetworking/NSURLConnection (~> 2.2.0)
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2.0)
+  - AMSlideMenu (~> 1.5.3)
   - AVHexColor (~> 1.2.0)
   - BDBOAuth1Manager (~> 1.2.1)
   - DateTools (~> 1.3.0)
@@ -47,6 +49,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: ab63e259fe91eef4519b371ef0a4955af0e73e64
+  AMSlideMenu: ab0c9313c74eac61e360d2a714d2d8202f6de916
   AVHexColor: b47099552819a98dc58d7931f0f43eb6e2308342
   BDBOAuth1Manager: 55c7390b5018cac757e322ad8f9ab782b0f9fd01
   DateTools: aa3131160337433a152c0228a2a1be2ff4ed3e05

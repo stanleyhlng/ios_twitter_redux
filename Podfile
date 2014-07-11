@@ -9,3 +9,5 @@ pod 'AVHexColor', '~> 1.2.0'
 pod 'BDBOAuth1Manager', '~> 1.2.1'
 pod 'Mantle', '~> 1.5'
 pod 'DateTools', '~> 1.3.0'
+pod "AMSlideMenu", "~> 1.5.3"
+
