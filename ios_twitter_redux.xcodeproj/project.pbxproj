@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		0F6C3E7ED9924753A81A026D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4255B95197F44CECAAD81AB4 /* libPods.a */; };
+		20A81390196FA29300F67AEA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8138E196FA29300F67AEA /* MainViewController.m */; };
+		20A81391196FA29300F67AEA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A8138F196FA29300F67AEA /* MainViewController.xib */; };
+		20A813A0196FABBF00F67AEA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8139E196FABBF00F67AEA /* MenuViewController.m */; };
+		20A813A1196FABBF00F67AEA /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A8139F196FABBF00F67AEA /* MenuViewController.xib */; };
+		20A813B5196FB33A00F67AEA /* HomeTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A813B3196FB33A00F67AEA /* HomeTimelineViewController.m */; };
+		20A813B6196FB33A00F67AEA /* HomeTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A813B4196FB33A00F67AEA /* HomeTimelineViewController.xib */; };
+		20A813BA196FB35500F67AEA /* MentionsTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A813B8196FB35500F67AEA /* MentionsTimelineViewController.m */; };
+		20A813BB196FB35500F67AEA /* MentionsTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A813B9196FB35500F67AEA /* MentionsTimelineViewController.xib */; };
+		20A813BF196FB37000F67AEA /* UserTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A813BD196FB37000F67AEA /* UserTimelineViewController.m */; };
+		20A813C0196FB37000F67AEA /* UserTimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A813BE196FB37000F67AEA /* UserTimelineViewController.xib */; };
+		20A813C5196FBACE00F67AEA /* UserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A813C3196FBACE00F67AEA /* UserTableViewCell.m */; };
+		20A813C6196FBACE00F67AEA /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A813C4196FBACE00F67AEA /* UserTableViewCell.xib */; };
 		20B28B06196F94D80024CB0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B28B05196F94D80024CB0E /* Foundation.framework */; };
 		20B28B08196F94D80024CB0E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B28B07196F94D80024CB0E /* CoreGraphics.framework */; };
 		20B28B0A196F94D80024CB0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B28B09196F94D80024CB0E /* UIKit.framework */; };
@@ -33,6 +45,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20A8138D196FA29300F67AEA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		20A8138E196FA29300F67AEA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		20A8138F196FA29300F67AEA /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		20A8139D196FABBF00F67AEA /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		20A8139E196FABBF00F67AEA /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		20A8139F196FABBF00F67AEA /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
+		20A813B2196FB33A00F67AEA /* HomeTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTimelineViewController.h; sourceTree = "<group>"; };
+		20A813B3196FB33A00F67AEA /* HomeTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTimelineViewController.m; sourceTree = "<group>"; };
+		20A813B4196FB33A00F67AEA /* HomeTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTimelineViewController.xib; sourceTree = "<group>"; };
+		20A813B7196FB35500F67AEA /* MentionsTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MentionsTimelineViewController.h; sourceTree = "<group>"; };
+		20A813B8196FB35500F67AEA /* MentionsTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MentionsTimelineViewController.m; sourceTree = "<group>"; };
+		20A813B9196FB35500F67AEA /* MentionsTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MentionsTimelineViewController.xib; sourceTree = "<group>"; };
+		20A813BC196FB37000F67AEA /* UserTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTimelineViewController.h; sourceTree = "<group>"; };
+		20A813BD196FB37000F67AEA /* UserTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTimelineViewController.m; sourceTree = "<group>"; };
+		20A813BE196FB37000F67AEA /* UserTimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTimelineViewController.xib; sourceTree = "<group>"; };
+		20A813C2196FBACE00F67AEA /* UserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTableViewCell.h; sourceTree = "<group>"; };
+		20A813C3196FBACE00F67AEA /* UserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTableViewCell.m; sourceTree = "<group>"; };
+		20A813C4196FBACE00F67AEA /* UserTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 		20B28B02196F94D80024CB0E /* ios_twitter_redux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios_twitter_redux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20B28B05196F94D80024CB0E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20B28B07196F94D80024CB0E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -81,13 +111,15 @@
 		20A81375196FA00300F67AEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				20A81392196FA2CF00F67AEA /* App */,
 				20A81378196FA01D00F67AEA /* Account */,
 				20A8137D196FA0BC00F67AEA /* Compose */,
+				20A813B1196FB32500F67AEA /* Home Timeline */,
 				20A81376196FA00900F67AEA /* Login */,
-				20A8137B196FA04700F67AEA /* Mention */,
+				20A8138B196FA27500F67AEA /* Main */,
+				20A8137B196FA04700F67AEA /* Mentions Timeline */,
 				20A81385196FA13900F67AEA /* Menu */,
-				20A8137C196FA05100F67AEA /* Profile */,
-				20A81379196FA02600F67AEA /* Timeline */,
+				20A8137C196FA05100F67AEA /* User Timeline */,
 				20A8137A196FA02F00F67AEA /* Tweet */,
 			);
 			name = Controllers;
@@ -107,13 +139,6 @@
 			name = Account;
 			sourceTree = "<group>";
 		};
-		20A81379196FA02600F67AEA /* Timeline */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Timeline;
-			sourceTree = "<group>";
-		};
 		20A8137A196FA02F00F67AEA /* Tweet */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,18 +146,24 @@
 			name = Tweet;
 			sourceTree = "<group>";
 		};
-		20A8137B196FA04700F67AEA /* Mention */ = {
+		20A8137B196FA04700F67AEA /* Mentions Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				20A813B7196FB35500F67AEA /* MentionsTimelineViewController.h */,
+				20A813B8196FB35500F67AEA /* MentionsTimelineViewController.m */,
+				20A813B9196FB35500F67AEA /* MentionsTimelineViewController.xib */,
 			);
-			name = Mention;
+			name = "Mentions Timeline";
 			sourceTree = "<group>";
 		};
-		20A8137C196FA05100F67AEA /* Profile */ = {
+		20A8137C196FA05100F67AEA /* User Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				20A813BC196FB37000F67AEA /* UserTimelineViewController.h */,
+				20A813BD196FB37000F67AEA /* UserTimelineViewController.m */,
+				20A813BE196FB37000F67AEA /* UserTimelineViewController.xib */,
 			);
-			name = Profile;
+			name = "User Timeline";
 			sourceTree = "<group>";
 		};
 		20A8137D196FA0BC00F67AEA /* Compose */ = {
@@ -184,6 +215,7 @@
 		20A81383196FA10100F67AEA /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
+				20A813C1196FBAB500F67AEA /* User */,
 				20A81384196FA11700F67AEA /* Tweet */,
 			);
 			name = "Table View Cells";
@@ -199,8 +231,50 @@
 		20A81385196FA13900F67AEA /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				20A8139D196FABBF00F67AEA /* MenuViewController.h */,
+				20A8139E196FABBF00F67AEA /* MenuViewController.m */,
+				20A8139F196FABBF00F67AEA /* MenuViewController.xib */,
 			);
 			name = Menu;
+			sourceTree = "<group>";
+		};
+		20A8138B196FA27500F67AEA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				20A8138D196FA29300F67AEA /* MainViewController.h */,
+				20A8138E196FA29300F67AEA /* MainViewController.m */,
+				20A8138F196FA29300F67AEA /* MainViewController.xib */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		20A81392196FA2CF00F67AEA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				20B28B14196F94D80024CB0E /* AppDelegate.h */,
+				20B28B15196F94D80024CB0E /* AppDelegate.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		20A813B1196FB32500F67AEA /* Home Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				20A813B2196FB33A00F67AEA /* HomeTimelineViewController.h */,
+				20A813B3196FB33A00F67AEA /* HomeTimelineViewController.m */,
+				20A813B4196FB33A00F67AEA /* HomeTimelineViewController.xib */,
+			);
+			name = "Home Timeline";
+			sourceTree = "<group>";
+		};
+		20A813C1196FBAB500F67AEA /* User */ = {
+			isa = PBXGroup;
+			children = (
+				20A813C2196FBACE00F67AEA /* UserTableViewCell.h */,
+				20A813C3196FBACE00F67AEA /* UserTableViewCell.m */,
+				20A813C4196FBACE00F67AEA /* UserTableViewCell.xib */,
+			);
+			name = User;
 			sourceTree = "<group>";
 		};
 		20B28AF9196F94D80024CB0E = {
@@ -241,8 +315,6 @@
 				20A81382196FA0FB00F67AEA /* UI */,
 				20A81375196FA00300F67AEA /* Controllers */,
 				20A8137E196FA0CA00F67AEA /* Models */,
-				20B28B14196F94D80024CB0E /* AppDelegate.h */,
-				20B28B15196F94D80024CB0E /* AppDelegate.m */,
 				20B28B17196F94D80024CB0E /* Images.xcassets */,
 				20B28B0C196F94D80024CB0E /* Supporting Files */,
 			);
@@ -355,8 +427,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A813C6196FBACE00F67AEA /* UserTableViewCell.xib in Resources */,
+				20A813BB196FB35500F67AEA /* MentionsTimelineViewController.xib in Resources */,
 				20B28B10196F94D80024CB0E /* InfoPlist.strings in Resources */,
+				20A813C0196FB37000F67AEA /* UserTimelineViewController.xib in Resources */,
+				20A81391196FA29300F67AEA /* MainViewController.xib in Resources */,
 				20B28B18196F94D80024CB0E /* Images.xcassets in Resources */,
+				20A813B6196FB33A00F67AEA /* HomeTimelineViewController.xib in Resources */,
+				20A813A1196FABBF00F67AEA /* MenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,8 +486,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A813C5196FBACE00F67AEA /* UserTableViewCell.m in Sources */,
+				20A813BA196FB35500F67AEA /* MentionsTimelineViewController.m in Sources */,
 				20B28B16196F94D80024CB0E /* AppDelegate.m in Sources */,
+				20A81390196FA29300F67AEA /* MainViewController.m in Sources */,
+				20A813B5196FB33A00F67AEA /* HomeTimelineViewController.m in Sources */,
+				20A813BF196FB37000F67AEA /* UserTimelineViewController.m in Sources */,
 				20B28B12196F94D80024CB0E /* main.m in Sources */,
+				20A813A0196FABBF00F67AEA /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

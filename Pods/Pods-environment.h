@@ -114,3 +114,6 @@
 #define COCOAPODS_VERSION_MINOR_UIActivityIndicator_for_SDWebImage 0
 #define COCOAPODS_VERSION_PATCH_UIActivityIndicator_for_SDWebImage 5
 
+// CUSTOM
+#define AMSlideMenuWithoutStoryboards
+

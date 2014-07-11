@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="KGk-i7-Jjw" customClass="UserTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-profile-flickr" translatesAutoresizingMaskIntoConstraints="NO" id="QAg-lK-6vv">
+                        <rect key="frame" x="15" y="10" width="70" height="70"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="DQ2-bG-7fj"/>
+                            <constraint firstAttribute="width" constant="70" id="ECr-RK-kvs"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stanley Ng" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y98-pZ-1IY">
+                        <rect key="frame" x="93" y="10" width="97" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@stanleyhlng" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ8-9l-W5H">
+                        <rect key="frame" x="93" y="38" width="85" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Omi-va-1oK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QAg-lK-6vv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GW4-aR-7g4"/>
+                    <constraint firstItem="QAg-lK-6vv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="LDY-mb-chF"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="y98-pZ-1IY" secondAttribute="trailing" constant="50" id="SrS-BE-Kjt"/>
+                    <constraint firstItem="kQ8-9l-W5H" firstAttribute="leading" secondItem="QAg-lK-6vv" secondAttribute="trailing" constant="8" id="Tko-nq-0Mg"/>
+                    <constraint firstItem="y98-pZ-1IY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="bNd-Vu-GM4"/>
+                    <constraint firstItem="kQ8-9l-W5H" firstAttribute="top" secondItem="y98-pZ-1IY" secondAttribute="bottom" constant="4" id="eR0-LU-hwQ"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kQ8-9l-W5H" secondAttribute="trailing" constant="50" id="kfo-sx-5lb"/>
+                    <constraint firstItem="y98-pZ-1IY" firstAttribute="leading" secondItem="QAg-lK-6vv" secondAttribute="trailing" constant="8" id="nWa-7I-539"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="nameLabel" destination="y98-pZ-1IY" id="yOT-nw-5vo"/>
+                <outlet property="screenNameLabel" destination="kQ8-9l-W5H" id="BRj-MH-g2l"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon-profile-flickr" width="320" height="320"/>
+    </resources>
+</document>
