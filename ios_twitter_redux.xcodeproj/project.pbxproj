@@ -10,6 +10,8 @@
 		0F6C3E7ED9924753A81A026D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4255B95197F44CECAAD81AB4 /* libPods.a */; };
 		202CEFDB19708263009624AD /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 202CEFD919708263009624AD /* ComposeViewController.m */; };
 		202CEFDC19708263009624AD /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 202CEFDA19708263009624AD /* ComposeViewController.xib */; };
+		20532F0119712D2B00770E3B /* TweetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20532EFF19712D2B00770E3B /* TweetViewController.m */; };
+		20532F0219712D2B00770E3B /* TweetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20532F0019712D2B00770E3B /* TweetViewController.xib */; };
 		20A81390196FA29300F67AEA /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8138E196FA29300F67AEA /* MainViewController.m */; };
 		20A81391196FA29300F67AEA /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20A8138F196FA29300F67AEA /* MainViewController.xib */; };
 		20A813A0196FABBF00F67AEA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20A8139E196FABBF00F67AEA /* MenuViewController.m */; };
@@ -50,6 +52,9 @@
 		202CEFD819708263009624AD /* ComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposeViewController.h; sourceTree = "<group>"; };
 		202CEFD919708263009624AD /* ComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		202CEFDA19708263009624AD /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
+		20532EFE19712D2B00770E3B /* TweetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetViewController.h; sourceTree = "<group>"; };
+		20532EFF19712D2B00770E3B /* TweetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetViewController.m; sourceTree = "<group>"; };
+		20532F0019712D2B00770E3B /* TweetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetViewController.xib; sourceTree = "<group>"; };
 		20A8138D196FA29300F67AEA /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		20A8138E196FA29300F67AEA /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		20A8138F196FA29300F67AEA /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -147,6 +152,9 @@
 		20A8137A196FA02F00F67AEA /* Tweet */ = {
 			isa = PBXGroup;
 			children = (
+				20532EFE19712D2B00770E3B /* TweetViewController.h */,
+				20532EFF19712D2B00770E3B /* TweetViewController.m */,
+				20532F0019712D2B00770E3B /* TweetViewController.xib */,
 			);
 			name = Tweet;
 			sourceTree = "<group>";
@@ -443,6 +451,7 @@
 				20A81391196FA29300F67AEA /* MainViewController.xib in Resources */,
 				20B28B18196F94D80024CB0E /* Images.xcassets in Resources */,
 				20A813B6196FB33A00F67AEA /* HomeTimelineViewController.xib in Resources */,
+				20532F0219712D2B00770E3B /* TweetViewController.xib in Resources */,
 				20A813A1196FABBF00F67AEA /* MenuViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +508,7 @@
 				20A813BA196FB35500F67AEA /* MentionsTimelineViewController.m in Sources */,
 				20B28B16196F94D80024CB0E /* AppDelegate.m in Sources */,
 				202CEFDB19708263009624AD /* ComposeViewController.m in Sources */,
+				20532F0119712D2B00770E3B /* TweetViewController.m in Sources */,
 				20A81390196FA29300F67AEA /* MainViewController.m in Sources */,
 				20A813B5196FB33A00F67AEA /* HomeTimelineViewController.m in Sources */,
 				20A813BF196FB37000F67AEA /* UserTimelineViewController.m in Sources */,

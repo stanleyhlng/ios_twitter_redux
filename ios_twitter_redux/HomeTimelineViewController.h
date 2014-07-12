@@ -14,7 +14,7 @@
 - (void)composeFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message;
 @end
 
-@interface HomeTimelineViewController : UIViewController
+@interface HomeTimelineViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) id <HomeTimelineViewControllerDelegate> delegate;
 
 @end
