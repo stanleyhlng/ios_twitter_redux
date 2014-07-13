@@ -35,6 +35,8 @@
     [leftBtn addTarget:mainVC action:@selector(openLeftMenu) forControlEvents:UIControlEventTouchUpInside];
     
     navItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
+    
+    NSLog(@"add left menu button: %@", navItem.leftBarButtonItem);
 }
 
 - (void)addRightMenuButton
