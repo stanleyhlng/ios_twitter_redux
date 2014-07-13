@@ -37,6 +37,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self setupTableView];
+    
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.navigationController.view addGestureRecognizer:longPressGestureRecognizer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +76,11 @@
     NSLog(@"handle tweet with index: %d", index);
     TweetViewController *vc = [[TweetViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGestureRecognizer
+{
+    NSLog(@"handle long press");
 }
 
 - (void)setupTableView
