@@ -12,6 +12,7 @@
 
 @protocol HomeTimelineViewControllerDelegate <NSObject>
 - (void)composeFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message;
+- (void)longPressFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message;
 @end
 
 @interface HomeTimelineViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>

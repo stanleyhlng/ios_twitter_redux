@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Stanley Ng. All rights reserved.
 //
 
+#import "AccountViewController.h"
 #import "ComposeViewController.h"
 #import "MenuViewController.h"
 #import "HomeTimelineViewController.h"
@@ -18,9 +19,6 @@
 @interface MenuViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *menuItems;
-@property (strong, nonatomic) HomeTimelineViewController *homeTimelineViewController;
-@property (strong, nonatomic) MentionsTimelineViewController *mentionsTimelineViewController;
-@property (strong, nonatomic) UserTimelineViewController *userTimelineViewController;
 
 - (void)handleCompose;
 - (void)handleHomeTimeline;
@@ -38,16 +36,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.menuItems = @[@"Profile", @"Timelines", @"Mentions", @"Logout"];
-        
-        self.homeTimelineViewController = [[HomeTimelineViewController alloc] initWithNibName:@"HomeTimelineViewController" bundle:nil];
-        self.homeTimelineViewController.delegate = self;
-        
-        self.mentionsTimelineViewController = [[MentionsTimelineViewController alloc] initWithNibName:@"MentionsTimelineViewController" bundle:nil];
-        self.mentionsTimelineViewController.delegate = self;
-
-        self.userTimelineViewController = [[UserTimelineViewController alloc] initWithNibName:@"UserTimelineViewController" bundle:nil];
-        self.userTimelineViewController.delegate = self;
+        self.menuItems = @[@"Profile", @"Timelines", @"Mentions", @"Logout"];        
     }
     return self;
 }
@@ -72,33 +61,41 @@
     
     ComposeViewController *vc = [[ComposeViewController alloc] init];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
-    
+
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
 - (void)handleHomeTimeline
 {
     NSLog(@"handle home timeline");
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.homeTimelineViewController];
+    HomeTimelineViewController *vc = [[HomeTimelineViewController alloc] init];
+    vc.delegate = self;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self openContentNavigationController:nvc];
 }
 
 - (void)handleLogout
 {
     NSLog(@"handle logout");
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)handleMentionsTimeline
 {
     NSLog(@"handle mentions timeline");
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.mentionsTimelineViewController];
+    MentionsTimelineViewController *vc = [[MentionsTimelineViewController alloc] init];
+    vc.delegate = self;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self openContentNavigationController:nvc];
 }
 
 - (void)handleUserTimeline
 {
     NSLog(@"handle user timeline");
-    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:self.userTimelineViewController];
+    UserTimelineViewController *vc = [[UserTimelineViewController alloc] init];
+    vc.delegate = self;
+    UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self openContentNavigationController:nvc];
 }
 
@@ -214,23 +211,37 @@
 
 - (void)composeFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message
 {
-    NSLog(@"compse from home timeline view");
+    NSLog(@"compose from home timeline view");
     [self handleCompose];
+}
+
+- (void)longPressFromHomeTimelineView:(HomeTimelineViewController *)controller message:(NSString *)message
+{
+    NSLog(@"long press from home timeline view");
+    AccountViewController *vc = [[AccountViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 # pragma MentionsTimelineViewControllerDelegate mehtods
 
 - (void)composeFromMentionsTimelineView:(MentionsTimelineViewController *)controller message:(NSString *)message
 {
-    NSLog(@"compse from mentions timeline view");
+    NSLog(@"compose from mentions timeline view");
     [self handleCompose];
+}
+
+- (void)longPressFromMentionsTimelineView:(MentionsTimelineViewController *)controller message:(NSString *)message
+{
+    NSLog(@"long press from mentions timeline view");
+    AccountViewController *vc = [[AccountViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 # pragma UserTimelineViewControllerDelegate mehtods
 
 - (void)composeFromUserTimelineView:(UserTimelineViewController *)controller message:(NSString *)message
 {
-    NSLog(@"compse from user timeline view");
+    NSLog(@"compose from user timeline view");
     [self handleCompose];
 }
 

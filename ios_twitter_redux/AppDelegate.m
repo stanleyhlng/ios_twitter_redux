@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
+#import "LoginViewController.h"
 #import "AVHexColor.h"
 
 @implementation AppDelegate
@@ -69,7 +69,7 @@
 
 - (void)customizeWindow
 {
-    MainViewController *vc = [[MainViewController alloc] init];
+    LoginViewController *vc = [[LoginViewController alloc] init];
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

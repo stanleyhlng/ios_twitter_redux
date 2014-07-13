@@ -8,13 +8,16 @@
 
 #import "HomeTimelineViewController.h"
 #import "TweetViewController.h"
+#import "UIViewController+AMSlideMenu.h"
 
 @interface HomeTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (void)customizeRightBarButton;
+- (void)customizeTitleView;
 - (void)handleCompose;
 - (void)handleTweetWithIndex:(NSInteger)index;
+- (void)setupLongPressGestureRecognizer;
 - (void)setupTableView;
 
 @end
@@ -25,9 +28,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Custom initialization]
         [self customizeRightBarButton];
-        self.title = @"Timeline";
+        [self customizeTitleView];
     }
     return self;
 }
@@ -36,10 +39,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self setupLongPressGestureRecognizer];
     [self setupTableView];
-    
-    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    [self.navigationController.view addGestureRecognizer:longPressGestureRecognizer];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,6 +71,16 @@
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
+- (void)customizeTitleView;
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont boldSystemFontOfSize:16.0f];
+    label.text = @"TIMELINE";
+    label.textColor = [UIColor whiteColor];
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
+}
+
 - (void)handleCompose
 {
     NSLog(@"handle compose");
@@ -80,7 +96,22 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGestureRecognizer
 {
-    NSLog(@"handle long press");
+    CGPoint point = [longPressGestureRecognizer locationInView:self.view];
+    
+    if (longPressGestureRecognizer.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"Gesture began at: %@", NSStringFromCGPoint(point));
+        [self.delegate longPressFromHomeTimelineView:self message:nil];
+    } else if (longPressGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"Gesture changed: %@", NSStringFromCGPoint(point));
+    } else if (longPressGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"Gesture ended: %@", NSStringFromCGPoint(point));
+    }
+}
+
+- (void)setupLongPressGestureRecognizer
+{
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.navigationController.view addGestureRecognizer:longPressGestureRecognizer];
 }
 
 - (void)setupTableView

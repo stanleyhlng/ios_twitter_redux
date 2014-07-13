@@ -49,10 +49,13 @@
 
     [button setImage:image forState:UIControlStateNormal];
     [button setImage:image forState:UIControlStateHighlighted];
+    [button setImage:image forState:UIControlStateSelected];
 
-    button.frame = CGRectMake(0, 0, 30, 30);
-    button.imageEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4);
     button.contentMode = UIViewContentModeScaleAspectFit;
+    button.frame = CGRectMake(-15, 0, 32, 32);
+    button.imageEdgeInsets = UIEdgeInsetsMake(4, 4, 4, 4);
+    
+    NSLog(@"configure left menu button: %@", button);
 }
 
 @end

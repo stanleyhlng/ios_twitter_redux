@@ -58,9 +58,14 @@
     self.navigationItem.rightBarButtonItem = barButtonItem;
 }
 
-- (void)customizeTitleView
+- (void)customizeTitleView;
 {
-    self.title = @"Tweet";
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont boldSystemFontOfSize:16.0f];
+    label.text = @"TWEET";
+    label.textColor = [UIColor whiteColor];
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
 }
 
 - (void)handleCompose

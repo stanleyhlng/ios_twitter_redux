@@ -9,5 +9,18 @@
 #import "BDBOAuth1RequestOperationManager.h"
 
 @interface TwitterClient : BDBOAuth1RequestOperationManager
++ (TwitterClient *)instance;
+
+#pragma TIMELINES methods
+
+#pragma TWEETS methods
+
+#pragma FAVORITES methods
+
+#pragma USERS methods
+
+#pragma OAUTH methods
+
+#pragma HELPERS methods
 
 @end

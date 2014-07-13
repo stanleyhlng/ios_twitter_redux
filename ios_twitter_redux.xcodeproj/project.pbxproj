@@ -36,6 +36,11 @@
 		20B28B21196F94D80024CB0E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B28B09196F94D80024CB0E /* UIKit.framework */; };
 		20B28B29196F94D80024CB0E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20B28B27196F94D80024CB0E /* InfoPlist.strings */; };
 		20B28B2B196F94D80024CB0E /* ios_twitter_reduxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B28B2A196F94D80024CB0E /* ios_twitter_reduxTests.m */; };
+		20E2CD4219727704002CFF37 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD4019727704002CFF37 /* AccountViewController.m */; };
+		20E2CD4319727704002CFF37 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E2CD4119727704002CFF37 /* AccountViewController.xib */; };
+		20E2CD471972F3B4002CFF37 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD451972F3B4002CFF37 /* LoginViewController.m */; };
+		20E2CD481972F3B4002CFF37 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E2CD461972F3B4002CFF37 /* LoginViewController.xib */; };
+		20E2CD4D19730346002CFF37 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD4C19730346002CFF37 /* TwitterClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +94,14 @@
 		20B28B26196F94D80024CB0E /* ios_twitter_reduxTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ios_twitter_reduxTests-Info.plist"; sourceTree = "<group>"; };
 		20B28B28196F94D80024CB0E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		20B28B2A196F94D80024CB0E /* ios_twitter_reduxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ios_twitter_reduxTests.m; sourceTree = "<group>"; };
+		20E2CD3F19727704002CFF37 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
+		20E2CD4019727704002CFF37 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
+		20E2CD4119727704002CFF37 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		20E2CD441972F3B4002CFF37 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		20E2CD451972F3B4002CFF37 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		20E2CD461972F3B4002CFF37 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		20E2CD4B19730346002CFF37 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
+		20E2CD4C19730346002CFF37 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
 		3796A7466C134EA590D7E05A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4255B95197F44CECAAD81AB4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -138,6 +151,9 @@
 		20A81376196FA00900F67AEA /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				20E2CD441972F3B4002CFF37 /* LoginViewController.h */,
+				20E2CD451972F3B4002CFF37 /* LoginViewController.m */,
+				20E2CD461972F3B4002CFF37 /* LoginViewController.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -145,6 +161,9 @@
 		20A81378196FA01D00F67AEA /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				20E2CD3F19727704002CFF37 /* AccountViewController.h */,
+				20E2CD4019727704002CFF37 /* AccountViewController.m */,
+				20E2CD4119727704002CFF37 /* AccountViewController.xib */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -328,9 +347,10 @@
 		20B28B0B196F94D80024CB0E /* ios_twitter_redux */ = {
 			isa = PBXGroup;
 			children = (
-				20A81382196FA0FB00F67AEA /* UI */,
 				20A81375196FA00300F67AEA /* Controllers */,
+				20E2CD49197302FC002CFF37 /* Clients */,
 				20A8137E196FA0CA00F67AEA /* Models */,
+				20A81382196FA0FB00F67AEA /* UI */,
 				20B28B17196F94D80024CB0E /* Images.xcassets */,
 				20B28B0C196F94D80024CB0E /* Supporting Files */,
 			);
@@ -364,6 +384,23 @@
 				20B28B27196F94D80024CB0E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20E2CD49197302FC002CFF37 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				20E2CD4A1973030D002CFF37 /* Twitter */,
+			);
+			name = Clients;
+			sourceTree = "<group>";
+		};
+		20E2CD4A1973030D002CFF37 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				20E2CD4B19730346002CFF37 /* TwitterClient.h */,
+				20E2CD4C19730346002CFF37 /* TwitterClient.m */,
+			);
+			name = Twitter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -450,6 +487,8 @@
 				20A813C0196FB37000F67AEA /* UserTimelineViewController.xib in Resources */,
 				20A81391196FA29300F67AEA /* MainViewController.xib in Resources */,
 				20B28B18196F94D80024CB0E /* Images.xcassets in Resources */,
+				20E2CD4319727704002CFF37 /* AccountViewController.xib in Resources */,
+				20E2CD481972F3B4002CFF37 /* LoginViewController.xib in Resources */,
 				20A813B6196FB33A00F67AEA /* HomeTimelineViewController.xib in Resources */,
 				20532F0219712D2B00770E3B /* TweetViewController.xib in Resources */,
 				20A813A1196FABBF00F67AEA /* MenuViewController.xib in Resources */,
@@ -509,9 +548,12 @@
 				20B28B16196F94D80024CB0E /* AppDelegate.m in Sources */,
 				202CEFDB19708263009624AD /* ComposeViewController.m in Sources */,
 				20532F0119712D2B00770E3B /* TweetViewController.m in Sources */,
+				20E2CD4219727704002CFF37 /* AccountViewController.m in Sources */,
 				20A81390196FA29300F67AEA /* MainViewController.m in Sources */,
 				20A813B5196FB33A00F67AEA /* HomeTimelineViewController.m in Sources */,
+				20E2CD471972F3B4002CFF37 /* LoginViewController.m in Sources */,
 				20A813BF196FB37000F67AEA /* UserTimelineViewController.m in Sources */,
+				20E2CD4D19730346002CFF37 /* TwitterClient.m in Sources */,
 				20B28B12196F94D80024CB0E /* main.m in Sources */,
 				20A813A0196FABBF00F67AEA /* MenuViewController.m in Sources */,
 			);

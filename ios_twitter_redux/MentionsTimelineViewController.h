@@ -12,9 +12,10 @@
 
 @protocol MentionsTimelineViewControllerDelegate <NSObject>
 - (void)composeFromMentionsTimelineView:(MentionsTimelineViewController *)controller message:(NSString *)message;
+- (void)longPressFromMentionsTimelineView:(MentionsTimelineViewController *)controller message:(NSString *)message;
 @end
 
-@interface MentionsTimelineViewController : UIViewController
+@interface MentionsTimelineViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) id <MentionsTimelineViewControllerDelegate> delegate;
 
 @end

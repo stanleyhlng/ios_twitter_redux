@@ -7,9 +7,11 @@
 //
 
 #import "UserTimelineViewController.h"
+#import "UIViewController+AMSlideMenu.h"
 
 @interface UserTimelineViewController ()
 - (void) customizeRightBarButton;
+- (void) customizeTitleView;
 - (void)handleCompose;
 
 @end
@@ -21,7 +23,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.title = @"User";
+        [self customizeRightBarButton];
+        [self customizeTitleView];
     }
     return self;
 }
@@ -30,7 +33,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self customizeRightBarButton];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,6 +61,16 @@
     [[UIBarButtonItem alloc] initWithCustomView:button];
     
     self.navigationItem.rightBarButtonItem = barButtonItem;
+}
+
+- (void)customizeTitleView;
+{
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont boldSystemFontOfSize:16.0f];
+    label.text = @"USER";
+    label.textColor = [UIColor whiteColor];
+    [label sizeToFit];
+    self.navigationItem.titleView = label;
 }
 
 - (void)handleCompose
