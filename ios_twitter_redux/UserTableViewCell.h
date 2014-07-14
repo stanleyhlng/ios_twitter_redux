@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface UserTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
-
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (strong, nonatomic) User* user;
+- (void)configure;
 @end

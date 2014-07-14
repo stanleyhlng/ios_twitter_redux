@@ -7,9 +7,14 @@
 //
 
 #import "AccountViewController.h"
+#import "LoginViewController.h"
+#import "Session.h"
+#import "User.h"
+#import "MainViewController.h"
 
 @interface AccountViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableDictionary *accounts;
 
 - (void)setupTableView;
 
@@ -22,6 +27,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSMutableDictionary *accounts = [[Session instance] getAccounts];
+        NSLog(@"accounts: %@", accounts);
+        
+        self.accounts = accounts;
     }
     return self;
 }
@@ -50,13 +59,24 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = @"Account";
+    //cell.textLabel.text = @"Account";
+    
+    if (indexPath.row < self.accounts.count) {
+        NSArray *keys = [self.accounts allKeys];
+        
+        User *user = self.accounts[keys[indexPath.row]][@"user"];
+        cell.textLabel.text = [@"@" stringByAppendingString:user.screenName];
+    }
+    else {
+        cell.textLabel.text = @"ADD_ACCOUNT";
+    }
+    
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return self.accounts.count + 1;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,7 +100,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"did select row at index path: %d", indexPath.row);
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 @end

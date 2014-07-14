@@ -8,11 +8,17 @@
 
 #import "LoginViewController.h"
 #import "MainViewController.h"
+#import "TwitterClient.h"
+#import "Session.h"
+#import "User.h"
 
 @interface LoginViewController ()
 - (void)customizeLeftBarButton;
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
+- (void)getCredentialsWithParams:(NSMutableDictionary *)params
+                         success:(void(^)(User *user))success
+                         failure:(void(^)(NSError *error))failure;
 - (void)handleSignIn;
 - (void)presentMainView;
 
@@ -36,6 +42,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    NSLog(@"is_authorized: %d", [[TwitterClient instance] isAuthorized]);
+    if ([[TwitterClient instance] isAuthorized] == 1) {
+        
+        // set user in session
+        [self getCredentialsWithParams:nil success:^(User *user) {
+            
+            [[Session instance] addAccountWithKey:user.screenName val:@{@"user": user, @"access_token": [[TwitterClient instance].requestSerializer accessToken]}];
+            [[Session instance] setUser:user];
+            [self presentMainView];
+            
+        } failure:nil];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,10 +93,35 @@
     self.title = @"";
 }
 
+- (void)getCredentialsWithParams:(NSMutableDictionary *)params
+                         success:(void(^)(User *user))success
+                         failure:(void(^)(NSError *error))failure;
+{
+    NSLog(@"get credentials with params: %@", params);
+    
+    [[TwitterClient instance] verifyCredentialsWithParams:nil
+                                                  success:^(AFHTTPRequestOperation *operation, User *user) {
+                                                      NSLog(@"success: %@", user);
+                                                      success(user);
+                                                  }
+                                                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                      NSLog(@"failure: %@", error);
+                                                      if (failure != nil) {
+                                                          failure(error);
+                                                      }
+                                                  }];
+}
+
 - (void)handleSignIn
 {
     NSLog(@"handle sign in");
-    [self presentMainView];
+    //[self presentMainView];
+
+    [[TwitterClient instance] connectWithSuccess:^{
+        NSLog(@"Login view controller: connect ok!");
+    } failure:^(NSError *error) {
+        NSLog(@"Login view controller: connect fail!");
+    }];
 }
 
 - (void)presentMainView

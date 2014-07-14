@@ -28,8 +28,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@stanleyhlng" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ8-9l-W5H">
-                        <rect key="frame" x="93" y="38" width="85" height="18"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@stanleyhlng" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ8-9l-W5H">
+                        <rect key="frame" x="93" y="38" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Omi-va-1oK"/>
@@ -51,6 +51,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="y98-pZ-1IY" id="yOT-nw-5vo"/>
+                <outlet property="profileImageView" destination="QAg-lK-6vv" id="PgK-Ap-CS4"/>
                 <outlet property="screenNameLabel" destination="kQ8-9l-W5H" id="BRj-MH-g2l"/>
             </connections>
         </tableViewCell>

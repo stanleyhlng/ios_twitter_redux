@@ -9,5 +9,5 @@
 #import "AMSlideMenuMainViewController.h"
 
 @interface MainViewController : AMSlideMenuMainViewController
-
+- (void)debug;
 @end

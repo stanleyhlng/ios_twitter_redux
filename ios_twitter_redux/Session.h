@@ -13,7 +13,11 @@
 @interface Session : NSObject
 
 + (Session *)instance;
+
 - (User *)getUser;
 - (void)setUser:(User *)user;
+
+- (void)addAccountWithKey:(NSString *)key val:(NSDictionary *)val;
+- (NSMutableDictionary *)getAccounts;
 
 @end

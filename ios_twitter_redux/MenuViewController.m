@@ -15,6 +15,9 @@
 #import "UserTableViewCell.h"
 #import "UIViewController+AMSlideMenu.h"
 #import "AVHexColor.h"
+#import "TwitterClient.h"
+#import "Session.h"
+#import "User.h"
 
 @interface MenuViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -77,7 +80,9 @@
 - (void)handleLogout
 {
     NSLog(@"handle logout");
-    
+
+    [[TwitterClient instance] removeAccessToken];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -138,12 +143,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
- 
+    
     switch (indexPath.section) {
         case 0:
+        {
             //cell.textLabel.text = @"Section 0";
-            cell = [tableView dequeueReusableCellWithIdentifier:@"UserTableViewCell" forIndexPath:indexPath];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            UserTableViewCell *userTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"UserTableViewCell" forIndexPath:indexPath];
+            userTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            User *user = [[Session instance] getUser];
+            NSLog(@"[DEBUG] user: %@", user);
+            userTableViewCell.user = user;
+            [userTableViewCell configure];
+            
+            cell = userTableViewCell;
+        }
             break;
         case 1:
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];

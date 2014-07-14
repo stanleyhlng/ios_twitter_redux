@@ -11,6 +11,7 @@
 @implementation Session
 
 static User* currentUser = nil;
+static NSMutableDictionary* accounts = nil;
 
 + (Session *)instance {
     static Session *instance = nil;
@@ -31,6 +32,25 @@ static User* currentUser = nil;
 
 - (void)setUser:(User *)user {
     currentUser = user;
+}
+
+- (void)addAccountWithKey:(NSString *)key val:(NSDictionary *)val
+{
+    if (accounts == nil) {
+        accounts = [[NSMutableDictionary alloc] init];
+    }
+    
+    if ([accounts objectForKey:key] == nil) {
+        accounts[key] = val;
+    }
+    else {
+        NSLog(@"[session] account exists! key=%@", key);
+    }
+}
+
+- (NSMutableDictionary *)getAccounts
+{
+    return accounts;
 }
 
 @end

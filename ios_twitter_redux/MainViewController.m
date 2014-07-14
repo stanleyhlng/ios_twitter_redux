@@ -58,4 +58,8 @@
     NSLog(@"configure left menu button: %@", button);
 }
 
+- (void)debug
+{
+    NSLog(@"debug");
+}
 @end
