@@ -9,12 +9,18 @@
 #import "HomeTimelineViewController.h"
 #import "TweetViewController.h"
 #import "UIViewController+AMSlideMenu.h"
+#import "TwitterClient.h"
+#import "Tweet.h"
 
 @interface HomeTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSMutableArray *tweets;
 
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
+- (void)getHomeTimelineWithParams:(NSMutableDictionary *)params
+                          success:(void(^)(NSArray *tweets))success
+                          failure:(void(^)(NSError *error))failure;
 - (void)handleCompose;
 - (void)handleTweetWithIndex:(NSInteger)index;
 - (void)setupLongPressGestureRecognizer;
@@ -31,6 +37,17 @@
         // Custom initialization]
         [self customizeRightBarButton];
         [self customizeTitleView];
+        
+        self.tweets = [[NSMutableArray alloc] initWithCapacity:0];
+
+        [self getHomeTimelineWithParams:nil success:^(NSArray *tweets) {
+            
+            self.tweets = [tweets mutableCopy];
+            NSLog(@"[INIT] tweets.count: %d / %d", tweets.count, self.tweets.count);
+            
+            [self.tableView reloadData];
+            
+        } failure:nil];
     }
     return self;
 }
@@ -81,6 +98,25 @@
     self.navigationItem.titleView = label;
 }
 
+- (void)getHomeTimelineWithParams:(NSMutableDictionary *)params
+                          success:(void(^)(NSArray *tweets))success
+                          failure:(void(^)(NSError *error))failure;
+{
+    NSLog(@"get home timeline with params: %@", params);
+    
+    [[TwitterClient instance] homeTimelineWithParams:params
+                                             success:^(AFHTTPRequestOperation *operation, NSArray *tweets) {
+                                                 //NSLog(@"success: %@", tweets);
+                                                 success(tweets);
+                                             }
+                                             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                 NSLog(@"failure: %@", error);
+                                                 if (failure != nil) {
+                                                     failure(error);
+                                                 }
+                                             }];
+}
+
 - (void)handleCompose
 {
     NSLog(@"handle compose");
@@ -124,13 +160,16 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = @"Home Timeline";
+    
+    Tweet *tweet = self.tweets[indexPath.row];
+    cell.textLabel.text = tweet.text;
+    
     return cell;
 }
 

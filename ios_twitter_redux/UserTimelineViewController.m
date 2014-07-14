@@ -109,7 +109,7 @@
 
 - (void)handleTweetWithIndex:(NSInteger)index
 {
-    NSLog(@"handle tweet with index: %d", index);
+    NSLog(@"handle tweet with index: %ld", (long)index);
     TweetViewController *vc = [[TweetViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -144,7 +144,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"did select row at index path: %d", indexPath.row);
+    NSLog(@"did select row at index path: %ld", (long)indexPath.row);
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self handleTweetWithIndex:indexPath.row];

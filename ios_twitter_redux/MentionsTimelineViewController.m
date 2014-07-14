@@ -104,7 +104,7 @@
 
 - (void)handleTweetWithIndex:(NSInteger)index
 {
-    NSLog(@"handle tweet with index: %d", index);
+    NSLog(@"handle tweet with index: %d", (int)index);
     TweetViewController *vc = [[TweetViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }

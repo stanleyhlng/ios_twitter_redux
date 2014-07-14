@@ -152,7 +152,6 @@
             userTableViewCell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             User *user = [[Session instance] getUser];
-            NSLog(@"[DEBUG] user: %@", user);
             userTableViewCell.user = user;
             [userTableViewCell configure];
             
