@@ -16,6 +16,7 @@
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
 - (void)handleCompose;
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGestureRecognizer;
 - (void)handleTweetWithIndex:(NSInteger)index;
 - (void)setupLongPressGestureRecognizer;
 - (void)setupTableView;

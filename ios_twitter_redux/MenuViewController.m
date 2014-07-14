@@ -245,4 +245,11 @@
     [self handleCompose];
 }
 
+- (void)longPressFromUserTimelineView:(UserTimelineViewController *)controller message:(NSString *)message
+{
+    NSLog(@"long press from user timeline view");
+    AccountViewController *vc = [[AccountViewController alloc] init];
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
 @end
