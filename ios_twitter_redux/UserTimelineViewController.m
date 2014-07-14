@@ -12,6 +12,9 @@
 
 @interface UserTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (assign, nonatomic) CGRect backgroundImageFrame;
 
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
@@ -42,6 +45,8 @@
     // Do any additional setup after loading the view from its nib.
     [self setupLongPressGestureRecognizer];
     [self setupTableView];
+    
+    self.backgroundImageFrame = self.backgroundImageView.frame;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -125,7 +130,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -143,6 +148,45 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self handleTweetWithIndex:indexPath.row];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 220.0f)];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 220.0f;
+}
+
+# pragma UIScrollViewDelegate methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scroll view did scroll: %f", scrollView.contentOffset.y);
+    
+    CGFloat offset = scrollView.contentOffset.y;
+    CGRect frame = self.headerView.frame;
+    
+    if (offset < 0) {
+        // Adjust view proportionally
+        frame.origin.y = -150 - (offset / 3);
+        
+        // Adjust background image view
+        CGFloat scale = (self.backgroundImageFrame.size.width - offset / 3) / self.backgroundImageFrame.size.width;
+        scale = floorf(scale * 1000) / 1000;
+        NSLog(@"scale: %f", scale);
+
+        [self.backgroundImageView setTransform:CGAffineTransformMakeScale(scale, scale)];
+    }
+    else {
+        // Scroll up as normal
+        frame.origin.y = -150 - offset;
+    }
+    
+    self.headerView.frame = frame;
 }
 
 @end

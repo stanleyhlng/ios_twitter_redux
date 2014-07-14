@@ -16,7 +16,7 @@
 
 @end
 
-@interface UserTimelineViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface UserTimelineViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) id <UserTimelineViewControllerDelegate> delegate;
 
 @end
