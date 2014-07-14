@@ -41,6 +41,10 @@
 		20E2CD471972F3B4002CFF37 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD451972F3B4002CFF37 /* LoginViewController.m */; };
 		20E2CD481972F3B4002CFF37 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 20E2CD461972F3B4002CFF37 /* LoginViewController.xib */; };
 		20E2CD4D19730346002CFF37 /* TwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD4C19730346002CFF37 /* TwitterClient.m */; };
+		20E2CD5219739C4F002CFF37 /* NSURL+DictionaryFromQueryString.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD5119739C4F002CFF37 /* NSURL+DictionaryFromQueryString.m */; };
+		20E2CD5519739CAB002CFF37 /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD5419739CAB002CFF37 /* Tweet.m */; };
+		20E2CD5819739D08002CFF37 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD5719739D08002CFF37 /* User.m */; };
+		20E2CD5B19739D51002CFF37 /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E2CD5A19739D51002CFF37 /* Session.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +106,14 @@
 		20E2CD461972F3B4002CFF37 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		20E2CD4B19730346002CFF37 /* TwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterClient.h; sourceTree = "<group>"; };
 		20E2CD4C19730346002CFF37 /* TwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterClient.m; sourceTree = "<group>"; };
+		20E2CD5019739C4F002CFF37 /* NSURL+DictionaryFromQueryString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+DictionaryFromQueryString.h"; sourceTree = "<group>"; };
+		20E2CD5119739C4F002CFF37 /* NSURL+DictionaryFromQueryString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+DictionaryFromQueryString.m"; sourceTree = "<group>"; };
+		20E2CD5319739CAB002CFF37 /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
+		20E2CD5419739CAB002CFF37 /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		20E2CD5619739D08002CFF37 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		20E2CD5719739D08002CFF37 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		20E2CD5919739D51002CFF37 /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
+		20E2CD5A19739D51002CFF37 /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		3796A7466C134EA590D7E05A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		4255B95197F44CECAAD81AB4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -221,6 +233,8 @@
 		20A8137F196FA0D600F67AEA /* Session */ = {
 			isa = PBXGroup;
 			children = (
+				20E2CD5919739D51002CFF37 /* Session.h */,
+				20E2CD5A19739D51002CFF37 /* Session.m */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -228,6 +242,8 @@
 		20A81380196FA0DF00F67AEA /* User */ = {
 			isa = PBXGroup;
 			children = (
+				20E2CD5619739D08002CFF37 /* User.h */,
+				20E2CD5719739D08002CFF37 /* User.m */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -235,6 +251,8 @@
 		20A81381196FA0E900F67AEA /* Tweet */ = {
 			isa = PBXGroup;
 			children = (
+				20E2CD5319739CAB002CFF37 /* Tweet.h */,
+				20E2CD5419739CAB002CFF37 /* Tweet.m */,
 			);
 			name = Tweet;
 			sourceTree = "<group>";
@@ -347,6 +365,7 @@
 		20B28B0B196F94D80024CB0E /* ios_twitter_redux */ = {
 			isa = PBXGroup;
 			children = (
+				20E2CD4E19739C20002CFF37 /* Categories */,
 				20A81375196FA00300F67AEA /* Controllers */,
 				20E2CD49197302FC002CFF37 /* Clients */,
 				20A8137E196FA0CA00F67AEA /* Models */,
@@ -401,6 +420,23 @@
 				20E2CD4C19730346002CFF37 /* TwitterClient.m */,
 			);
 			name = Twitter;
+			sourceTree = "<group>";
+		};
+		20E2CD4E19739C20002CFF37 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				20E2CD4F19739C28002CFF37 /* Dictionary From Query String */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		20E2CD4F19739C28002CFF37 /* Dictionary From Query String */ = {
+			isa = PBXGroup;
+			children = (
+				20E2CD5019739C4F002CFF37 /* NSURL+DictionaryFromQueryString.h */,
+				20E2CD5119739C4F002CFF37 /* NSURL+DictionaryFromQueryString.m */,
+			);
+			name = "Dictionary From Query String";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -543,17 +579,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E2CD5819739D08002CFF37 /* User.m in Sources */,
 				20A813C5196FBACE00F67AEA /* UserTableViewCell.m in Sources */,
 				20A813BA196FB35500F67AEA /* MentionsTimelineViewController.m in Sources */,
+				20E2CD5B19739D51002CFF37 /* Session.m in Sources */,
 				20B28B16196F94D80024CB0E /* AppDelegate.m in Sources */,
 				202CEFDB19708263009624AD /* ComposeViewController.m in Sources */,
 				20532F0119712D2B00770E3B /* TweetViewController.m in Sources */,
 				20E2CD4219727704002CFF37 /* AccountViewController.m in Sources */,
 				20A81390196FA29300F67AEA /* MainViewController.m in Sources */,
 				20A813B5196FB33A00F67AEA /* HomeTimelineViewController.m in Sources */,
+				20E2CD5219739C4F002CFF37 /* NSURL+DictionaryFromQueryString.m in Sources */,
 				20E2CD471972F3B4002CFF37 /* LoginViewController.m in Sources */,
 				20A813BF196FB37000F67AEA /* UserTimelineViewController.m in Sources */,
 				20E2CD4D19730346002CFF37 /* TwitterClient.m in Sources */,
+				20E2CD5519739CAB002CFF37 /* Tweet.m in Sources */,
 				20B28B12196F94D80024CB0E /* main.m in Sources */,
 				20A813A0196FABBF00F67AEA /* MenuViewController.m in Sources */,
 			);
