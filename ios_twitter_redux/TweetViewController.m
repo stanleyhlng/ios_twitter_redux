@@ -17,6 +17,7 @@
 #import "AVHexColor.h"
 
 @interface TweetViewController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *statusTextHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
@@ -282,7 +283,7 @@
     frame = self.statusTextLabel.frame;
     NSLog(@"status text: %f %f", frame.size.width, frame.size.height);
     
-    //self.statusTextHeightConstraint.constant = frame.size.height;
+    self.statusTextHeightConstraint.constant = frame.size.height;
 }
 
 @end
