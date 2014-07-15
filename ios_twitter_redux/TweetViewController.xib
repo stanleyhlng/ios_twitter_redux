@@ -6,6 +6,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetViewController">
             <connections>
+                <outlet property="dateLabel" destination="rQl-BM-t1O" id="HZZ-6z-XAb"/>
+                <outlet property="favoriteButton" destination="oXP-h3-Pds" id="KPD-k0-aFA"/>
+                <outlet property="favoriteCountLabel" destination="ZhW-zM-sYR" id="PN8-sI-o4P"/>
+                <outlet property="nameLabel" destination="Dzj-ax-Jn5" id="eqd-3d-a0p"/>
+                <outlet property="profileImageView" destination="gT5-zo-qiT" id="V4A-8c-ZJW"/>
+                <outlet property="replyButton" destination="bnk-qe-3sO" id="WWE-O1-YxI"/>
+                <outlet property="retweetButton" destination="rDE-pi-R73" id="upS-Tr-P6H"/>
+                <outlet property="retweetCountLabel" destination="RZB-65-Yhf" id="LYi-ho-8bK"/>
+                <outlet property="screenNameLabel" destination="XBO-L0-XCk" id="mtb-c6-sqI"/>
+                <outlet property="statusTextLabel" destination="3Dc-Un-cET" id="OwW-cO-m1d"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

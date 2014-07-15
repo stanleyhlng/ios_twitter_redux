@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tweet.h"
 
 @interface TweetViewController : UIViewController
+@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) Tweet* tweet;
 
 @end
