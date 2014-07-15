@@ -59,6 +59,34 @@
              failure:failure];
 };
 
+// GET statuses/mentions_timeline
+// https://dev.twitter.com/docs/api/1.1/get/statuses/mentions_timeline
+- (AFHTTPRequestOperation *)mentionsTimelineWithParams:(NSMutableDictionary *)params
+                                               success:(void(^)(AFHTTPRequestOperation *operation, NSArray *tweets))success
+                                               failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    int count = 10;
+    
+    if (params == nil) {
+        params =
+        [@{
+           @"count": [[NSNumber alloc] initWithInt:count]
+           } mutableCopy];
+    }
+    else if (params[@"count"] == nil){
+        params[@"count"] = [[NSNumber alloc] initWithInt:count];
+    }
+    NSLog(@"client: params: %@", params);
+    
+    return [self GET:@"1.1/statuses/mentions_timeline.json"
+          parameters:params
+             success:^(AFHTTPRequestOperation *operation, id response) {
+                 //NSLog(@"success: %@", response);
+                 success(operation, [Tweet parseTweets:response]);
+             }
+             failure:failure];
+};
+
 // POST statuses/update
 // https://dev.twitter.com/docs/api/1.1/post/statuses/update
 - (AFHTTPRequestOperation *)updateWithParams:(NSDictionary *)params

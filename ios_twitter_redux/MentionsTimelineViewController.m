@@ -22,6 +22,9 @@
 - (void)callbackRefresh;
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
+- (void)getMentionsTimelineWithParams:(NSMutableDictionary *)params
+                              success:(void(^)(NSArray *tweets))success
+                              failure:(void(^)(NSError *error))failure;
 - (void)handleCompose;
 - (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGesture;
 - (void)handleRefresh;
@@ -42,6 +45,15 @@
         [self customizeTitleView];
         
         self.tweets = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        [self getMentionsTimelineWithParams:nil success:^(NSArray *tweets) {
+            
+            self.tweets = [tweets mutableCopy];
+            NSLog(@"[INIT] tweets.count: %d / %d", tweets.count, self.tweets.count);
+            
+            [self.tableView reloadData];
+            
+        } failure:nil];
     }
     return self;
 }
@@ -95,6 +107,25 @@
     label.textColor = [UIColor whiteColor];
     [label sizeToFit];
     self.navigationItem.titleView = label;
+}
+
+- (void)getMentionsTimelineWithParams:(NSMutableDictionary *)params
+                              success:(void(^)(NSArray *tweets))success
+                              failure:(void(^)(NSError *error))failure;
+{
+    NSLog(@"get mentions timeline with params: %@", params);
+    
+    [[TwitterClient instance] mentionsTimelineWithParams:params
+                                                 success:^(AFHTTPRequestOperation *operation, NSArray *tweets) {
+                                                     //NSLog(@"success: %@", tweets);
+                                                     success(tweets);
+                                                 }
+                                                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                                     NSLog(@"failure: %@", error);
+                                                     if (failure != nil) {
+                                                         failure(error);
+                                                     }
+                                                 }];
 }
 
 - (void)handleCompose
@@ -155,7 +186,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return self.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -206,7 +237,7 @@
         
         //c.delegate = self;
         c.index = indexPath.row;
-        //c.tweet = self.tweets[indexPath.row];
+        c.tweet = self.tweets[indexPath.row];
         [c configure];
     }
 }
