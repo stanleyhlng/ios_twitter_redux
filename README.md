@@ -22,7 +22,7 @@ Build a simple Twitter client that supports HAMBURGER menu.
    * [x] Optional: Pulling down the profile page should blur and resize the header image.
    * [ ] Optional: Contains a section with the users basic stats: # tweets, # following, # followers
  * Home Timeline
-   * [x] Tapping on a user image should bring up that user's profile page
+   * [x] Required: Tapping on a user image should bring up that user's profile page
  * Account switching
    * [x] Optional: Long press on tab bar to bring up Account view with animation
    * [ ] Optional: Tap account to switch to
