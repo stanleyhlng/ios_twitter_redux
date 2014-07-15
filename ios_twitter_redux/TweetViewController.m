@@ -210,7 +210,6 @@
     self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.layer.cornerRadius = 5.0f;
-    self.profileImageView.alpha = 0.5f;
     
     [self.profileImageView setImageWithURL:url placeholderImage:placeholder];
 }
@@ -223,7 +222,7 @@
     }
     
     NSNumber *count = tweet.favoriteCount;
-    self.favoriteCountLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+    self.favoriteCountLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     self.favoriteCountLabel.text = [count stringValue];
 }
 
@@ -234,7 +233,7 @@
         user = self.tweet.retweetedStatus.user;
     }
     
-    self.nameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    self.nameLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     self.nameLabel.text = user.name;
     self.nameLabel.userInteractionEnabled = YES;
     
@@ -251,7 +250,7 @@
     
     NSNumber *count = tweet.retweetCount;
     
-    self.retweetCountLabel.font = [UIFont boldSystemFontOfSize:13.0f];
+    self.retweetCountLabel.font = [UIFont boldSystemFontOfSize:16.0f];
     self.retweetCountLabel.text = [count stringValue];
 }
 
