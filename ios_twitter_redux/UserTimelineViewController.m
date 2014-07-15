@@ -9,15 +9,22 @@
 #import "TweetViewController.h"
 #import "UserTimelineViewController.h"
 #import "UIViewController+AMSlideMenu.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 #import "TwitterClient.h"
 #import "Tweet.h"
 #import "TweetTableViewCell.h"
+#import "User.h"
 
 @interface UserTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-@property (assign, nonatomic) CGRect backgroundImageFrame;
+@property (weak, nonatomic) IBOutlet UIImageView *profileBackgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
+@property (assign, nonatomic) CGRect profileBackgroundImageFrame;
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) TweetTableViewCell *prototypeCell;
 
@@ -31,6 +38,10 @@
 - (void)handleTweetWithIndex:(NSInteger)index;
 - (void)setupLongPressGestureRecognizer;
 - (void)setupTableView;
+- (void)setupProfileImageView;
+- (void)setupProfileBackgroundImageView;
+- (void)setupNameLabel;
+- (void)setupScreenNameLabel;
 
 @end
 
@@ -45,15 +56,6 @@
         [self customizeTitleView];
 
         self.tweets = [[NSMutableArray alloc] initWithCapacity:0];
-        
-        [self getUserTimelineWithParams:nil success:^(NSArray *tweets) {
-            
-            self.tweets = [tweets mutableCopy];
-            NSLog(@"[INIT] tweets.count: %d / %d", tweets.count, self.tweets.count);
-            
-            [self.tableView reloadData];
-            
-        } failure:nil];
     }
     return self;
 }
@@ -64,8 +66,23 @@
     // Do any additional setup after loading the view from its nib.
     [self setupLongPressGestureRecognizer];
     [self setupTableView];
+    [self setupProfileImageView];
+    [self setupProfileBackgroundImageView];
+    [self setupNameLabel];
+    [self setupScreenNameLabel];
     
-    self.backgroundImageFrame = self.backgroundImageView.frame;
+    self.profileBackgroundImageFrame = self.profileBackgroundImageView.frame;
+    
+    if (self.user != nil) {
+        [self getUserTimelineWithParams:nil success:^(NSArray *tweets) {
+            
+            self.tweets = [tweets mutableCopy];
+            NSLog(@"[INIT] tweets.count: %d / %d", tweets.count, self.tweets.count);
+            
+            [self.tableView reloadData];
+            
+        } failure:nil];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -169,6 +186,48 @@
          forCellReuseIdentifier:@"TweetTableViewCell"];
 }
 
+- (void)setupProfileImageView
+{
+    User *user = self.user;
+    
+    NSURL *url = user.profileImageUrl;
+    UIImage *placeholder = [UIImage imageNamed:@"profile"];
+    
+    self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
+    self.profileImageView.layer.masksToBounds = YES;
+    self.profileImageView.layer.cornerRadius = 5.0f;
+    
+    [self.profileImageView setImageWithURL:url placeholderImage:placeholder];
+}
+
+- (void)setupProfileBackgroundImageView
+{
+    User *user = self.user;
+    
+    NSURL *url = user.profileBackgroundImageUrl;
+    UIImage *placeholder = [UIImage imageNamed:@"profile"];
+    
+    self.profileBackgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.profileBackgroundImageView setImageWithURL:url placeholderImage:placeholder];
+}
+
+- (void)setupNameLabel
+{
+    User *user = self.user;
+    
+    self.nameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+    self.nameLabel.text = user.name;
+    [self.nameLabel sizeToFit];
+}
+
+- (void)setupScreenNameLabel
+{
+    User *user = self.user;
+    
+    self.screenNameLabel.font = [UIFont systemFontOfSize:13.0f];
+    self.screenNameLabel.text = [@"@" stringByAppendingString:user.screenName];
+}
+
 # pragma UITableViewDataSource methods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -186,6 +245,7 @@
     
     return cell;
 }
+
 
 # pragma UITableViewDelegate methods
 
@@ -225,6 +285,7 @@
     return 220.0f;
 }
 
+
 # pragma UIScrollViewDelegate methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -239,11 +300,11 @@
         frame.origin.y = -150 - (offset / 3);
         
         // Adjust background image view
-        CGFloat scale = (self.backgroundImageFrame.size.width - offset / 3) / self.backgroundImageFrame.size.width;
+        CGFloat scale = (self.profileBackgroundImageFrame.size.width - offset / 3) / self.profileBackgroundImageFrame.size.width;
         scale = floorf(scale * 1000) / 1000;
         NSLog(@"scale: %f", scale);
 
-        [self.backgroundImageView setTransform:CGAffineTransformMakeScale(scale, scale)];
+        [self.profileBackgroundImageView setTransform:CGAffineTransformMakeScale(scale, scale)];
     }
     else {
         // Scroll up as normal

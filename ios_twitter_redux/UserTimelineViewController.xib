@@ -6,8 +6,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserTimelineViewController">
             <connections>
-                <outlet property="backgroundImageView" destination="LvD-Ya-tcD" id="rQt-vL-pgQ"/>
                 <outlet property="headerView" destination="jIK-KD-WZ3" id="jCm-nZ-mtY"/>
+                <outlet property="nameLabel" destination="JfF-0g-ogz" id="I5e-A0-dd0"/>
+                <outlet property="profileBackgroundImageView" destination="LvD-Ya-tcD" id="gqr-66-Qob"/>
+                <outlet property="profileImageView" destination="Ln7-MI-bio" id="fwa-Xl-uTc"/>
+                <outlet property="screenNameLabel" destination="c3a-BE-h9a" id="ls8-Qd-VRu"/>
                 <outlet property="tableView" destination="ck2-Sy-4FQ" id="5wD-rg-kZI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

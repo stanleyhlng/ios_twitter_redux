@@ -98,8 +98,14 @@
 - (void)handleUserTimeline
 {
     NSLog(@"handle user timeline");
+    
+    User *user = [[Session instance] getUser];
+    NSLog(@"[DEBUG] user: %@", user);
+    
     UserTimelineViewController *vc = [[UserTimelineViewController alloc] init];
     vc.delegate = self;
+    vc.user = user;
+    
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self openContentNavigationController:nvc];
 }
