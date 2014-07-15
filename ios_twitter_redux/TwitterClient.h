@@ -30,6 +30,12 @@
                                                success:(void(^)(AFHTTPRequestOperation *operation, NSArray *tweets))success
                                                failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+// GET statuses/user_timeline
+// https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline
+- (AFHTTPRequestOperation *)userTimelineWithParams:(NSDictionary *)params
+                                           success:(void(^)(AFHTTPRequestOperation *operation, NSArray *tweets))success
+                                           failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 // POST statuses/update
 // https://dev.twitter.com/docs/api/1.1/post/statuses/update
 - (AFHTTPRequestOperation *)updateWithParams:(NSDictionary *)params
