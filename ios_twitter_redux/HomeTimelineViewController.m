@@ -15,15 +15,18 @@
 
 @interface HomeTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @property (strong, nonatomic) NSMutableArray *tweets;
 @property (strong, nonatomic) TweetTableViewCell *prototypeCell;
 
+- (void)callbackRefresh;
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
 - (void)getHomeTimelineWithParams:(NSMutableDictionary *)params
                           success:(void(^)(NSArray *tweets))success
                           failure:(void(^)(NSError *error))failure;
 - (void)handleCompose;
+- (void)handleRefresh;
 - (void)handleTweetWithIndex:(NSInteger)index;
 - (void)setupLongPressGestureRecognizer;
 - (void)setupTableView;
@@ -74,6 +77,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)callbackRefresh
+{
+    [self.refreshControl endRefreshing];
 }
 
 - (void)customizeRightBarButton
@@ -128,6 +136,12 @@
     [self.delegate composeFromHomeTimelineView:self message:@""];
 }
 
+- (void)handleRefresh
+{
+    NSLog(@"handle refresh");
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(callbackRefresh) userInfo:nil repeats:NO];
+}
+
 - (void)handleTweetWithIndex:(NSInteger)index
 {
     NSLog(@"handle tweet with index: %d", index);
@@ -157,6 +171,10 @@
 
 - (void)setupTableView
 {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     

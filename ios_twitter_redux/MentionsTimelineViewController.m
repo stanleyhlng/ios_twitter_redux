@@ -12,11 +12,14 @@
 
 @interface MentionsTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 
+- (void)callbackRefresh;
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
 - (void)handleCompose;
-- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGestureRecognizer;
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGesture;
+- (void)handleRefresh;
 - (void)handleTweetWithIndex:(NSInteger)index;
 - (void)setupLongPressGestureRecognizer;
 - (void)setupTableView;
@@ -55,6 +58,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)callbackRefresh
+{
+    [self.refreshControl endRefreshing];
+}
+
 - (void)customizeRightBarButton
 {
     UIImage *image = [[UIImage imageNamed:@"icon-compose"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -88,18 +96,24 @@
     [self.delegate composeFromMentionsTimelineView:self message:@""];
 }
 
-- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGestureRecognizer
+- (void)handleLongPress:(UILongPressGestureRecognizer *)longPressGesture
 {
-    CGPoint point = [longPressGestureRecognizer locationInView:self.view];
+    CGPoint point = [longPressGesture locationInView:self.view];
     
-    if (longPressGestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    if (longPressGesture.state == UIGestureRecognizerStateBegan) {
         NSLog(@"Gesture began at: %@", NSStringFromCGPoint(point));
         [self.delegate longPressFromMentionsTimelineView:self message:nil];
-    } else if (longPressGestureRecognizer.state == UIGestureRecognizerStateChanged) {
+    } else if (longPressGesture.state == UIGestureRecognizerStateChanged) {
         NSLog(@"Gesture changed: %@", NSStringFromCGPoint(point));
-    } else if (longPressGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    } else if (longPressGesture.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Gesture ended: %@", NSStringFromCGPoint(point));
     }
+}
+
+- (void)handleRefresh
+{
+    NSLog(@"handle refresh");
+    [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(callbackRefresh) userInfo:nil repeats:NO];
 }
 
 - (void)handleTweetWithIndex:(NSInteger)index
@@ -117,6 +131,10 @@
 
 - (void)setupTableView
 {
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(handleRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:self.refreshControl];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
