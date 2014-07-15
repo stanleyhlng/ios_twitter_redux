@@ -136,6 +136,7 @@
     
     self.statusTextLabel.font = [UIFont systemFontOfSize:14.0f];
     self.statusTextLabel.text = text;
+    [self.statusTextLabel sizeToFit];
 }
 
 @end
