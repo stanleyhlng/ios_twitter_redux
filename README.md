@@ -23,11 +23,11 @@ Build a simple Twitter client that supports HAMBURGER menu.
    * [ ] Optional: Contains a section with the users basic stats: # tweets, # following, # followers
  * Home Timeline
    * [x] Tapping on a user image should bring up that user's profile page
- * Account switching (optional)
-   * [x] Long press on tab bar to bring up Account view with animation
-   * [ ] Tap account to switch to
-   * [ ] Include a plus button to Add an Account
-   * [ ] Swipe to delete an account
+ * Account switching
+   * [x] Optional: Long press on tab bar to bring up Account view with animation
+   * [ ] Optional: Tap account to switch to
+   * [ ] Optional: Include a plus button to Add an Account
+   * [ ] Optional: Swipe to delete an account
 
 ## Time spent
 15 hours spent in total
