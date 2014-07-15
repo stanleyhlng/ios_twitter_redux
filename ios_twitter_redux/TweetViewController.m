@@ -32,6 +32,7 @@
 - (void)customizeRightBarButton;
 - (void)customizeTitleView;
 - (void)handleCompose;
+- (void)handleNameLabel;
 - (void)setupReplyButton;
 - (void)setupRetweetButton;
 - (void)setupFavoriteButton;
@@ -128,6 +129,11 @@
     [self presentViewController:nvc animated:YES completion:nil];
 }
 
+- (void)handleNameLabel
+{
+    NSLog(@"handle name label");
+}
+
 - (void)setupFavoriteButton
 {
     Tweet *tweet = self.tweet;
@@ -207,19 +213,6 @@
     self.profileImageView.alpha = 0.5f;
     
     [self.profileImageView setImageWithURL:url placeholderImage:placeholder];
-    /*
-    [self.profileImageView setImageWithURL:url
-                          placeholderImage:placeholder
-                                   options:SDWebImageRefreshCached
-                                 completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-                                     // Fade in image
-                                     [UIView beginAnimations:@"fade in" context:nil];
-                                     [UIView setAnimationDuration:0.5];
-                                     [self.profileImageView setAlpha:1.0f];
-                                     [UIView commitAnimations];
-                                 }
-               usingActivityIndicatorStyle:(UIActivityIndicatorViewStyleGray)];
-     */
 }
 
 - (void)setupFavoriteCountLabel
@@ -243,6 +236,10 @@
     
     self.nameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     self.nameLabel.text = user.name;
+    self.nameLabel.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleNameLabel)];
+    [self.nameLabel addGestureRecognizer:tapGesture];
 }
 
 - (void)setupRetweetCountLabel
