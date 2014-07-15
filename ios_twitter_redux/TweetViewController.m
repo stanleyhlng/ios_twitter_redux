@@ -8,6 +8,7 @@
 
 #import "ComposeViewController.h"
 #import "TweetViewController.h"
+#import "UserTimelineViewController.h"
 #import "TwitterClient.h"
 #import "User.h"
 #import "UIImageView+AFNetworking.h"
@@ -133,6 +134,13 @@
 - (void)handleNameLabel
 {
     NSLog(@"handle name label");
+    
+    User *user = self.tweet.user;
+    NSLog(@"user: %@", user);
+    
+    UserTimelineViewController *vc = [[UserTimelineViewController alloc] init];
+    vc.user = user;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)setupFavoriteButton

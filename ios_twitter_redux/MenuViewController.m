@@ -105,7 +105,6 @@
     UserTimelineViewController *vc = [[UserTimelineViewController alloc] init];
     vc.delegate = self;
     vc.user = user;
-    
     UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:vc];
     [self openContentNavigationController:nvc];
 }

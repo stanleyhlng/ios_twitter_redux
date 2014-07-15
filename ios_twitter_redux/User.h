@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSNumber *id;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSURL *profileBackgroundImageUrl;
+@property (nonatomic, strong) NSURL *profileBannerUrl;
 @property (nonatomic, strong) NSURL *profileImageUrl;
 @property (nonatomic, strong) NSString *screenName;
 @property (nonatomic, strong) NSNumber *statusesCount;

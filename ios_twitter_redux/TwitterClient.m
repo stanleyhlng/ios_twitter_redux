@@ -53,7 +53,7 @@
     return [self GET:@"1.1/statuses/home_timeline.json"
           parameters:params
              success:^(AFHTTPRequestOperation *operation, id response) {
-                 //NSLog(@"success: %@", response);
+                 NSLog(@"success: %@", response);
                  success(operation, [Tweet parseTweets:response]);
              }
              failure:failure];

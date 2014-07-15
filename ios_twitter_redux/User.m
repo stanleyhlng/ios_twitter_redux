@@ -18,6 +18,7 @@
              @"id": @"id",
              @"name": @"name",
              @"profileBackgroundImageUrl": @"profile_background_image_url",
+             @"profileBannerUrl": @"profile_banner_url",
              @"profileImageUrl": @"profile_image_url",
              @"screenName": @"screen_name",
              @"statusesCount": @"statuses_count",
@@ -26,6 +27,11 @@
 }
 
 + (NSValueTransformer *)profileBackgroundImageUrlJSONTransformer
+{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
++ (NSValueTransformer *)profileBannerUrlJSONTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }

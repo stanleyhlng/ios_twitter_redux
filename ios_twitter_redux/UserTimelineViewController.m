@@ -73,8 +73,11 @@
     
     self.profileBackgroundImageFrame = self.profileBackgroundImageView.frame;
     
-    if (self.user != nil) {
-        [self getUserTimelineWithParams:nil success:^(NSArray *tweets) {
+    User *user = self.user;
+    if (user != nil) {
+        NSLog(@"user: %@", user);
+        NSMutableDictionary *params = [@{@"user_id": user.id} mutableCopy];
+        [self getUserTimelineWithParams:params success:^(NSArray *tweets) {
             
             self.tweets = [tweets mutableCopy];
             NSLog(@"[INIT] tweets.count: %d / %d", tweets.count, self.tweets.count);
@@ -206,7 +209,15 @@
 {
     User *user = self.user;
     
-    NSURL *url = user.profileBackgroundImageUrl;
+    NSURL *url = user.profileBannerUrl;
+    if (url == nil) {
+        url = user.profileBackgroundImageUrl;
+    }
+    else {
+        url = [NSURL URLWithString:[url.absoluteString stringByAppendingString:@"/1500x500"]];
+    }
+    NSLog(@"url: %@", url.absoluteString);
+    
     UIImage *placeholder = [UIImage imageNamed:@"profile"];
     
     self.profileBackgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
