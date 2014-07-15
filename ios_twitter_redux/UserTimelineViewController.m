@@ -23,7 +23,6 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *blurredBackgroundImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *blurredProfileBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
@@ -229,10 +228,13 @@
     [self.profileBackgroundImageView setImageWithURL:url
                                     placeholderImage:placeholder
                                            completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        [self.blurredBackgroundImageView setImageToBlur:image
-                                             blurRadius:kLBBlurredImageDefaultBlurRadius
-                                        completionBlock:^(){
-                                            NSLog(@"The blurred image has been set");
+                                               
+                                               self.blurredBackgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+                                               
+                                               [self.blurredBackgroundImageView setImageToBlur:image
+                                                                                    blurRadius:kLBBlurredImageDefaultBlurRadius
+                                                                               completionBlock:^(){
+                                                                                   NSLog(@"The blurred image has been set");
                                         }];
     }];
 
@@ -334,6 +336,7 @@
 
         //[self.profileBackgroundImageView setTransform:CGAffineTransformMakeScale(scale, scale)];
         self.profileBackgroundImageView.layer.transform = CATransform3DMakeScale(scale, scale, 1);
+        self.blurredBackgroundImageView.layer.transform = CATransform3DMakeScale(scale, scale, 1);
         
         CGFloat alpha;
         if (offset < -100) {
