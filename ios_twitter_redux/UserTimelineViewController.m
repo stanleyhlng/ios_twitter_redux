@@ -16,11 +16,14 @@
 #import "Tweet.h"
 #import "TweetTableViewCell.h"
 #import "User.h"
+#import "UIImageView+LBBlurredImage.h"
 
 @interface UserTimelineViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileBackgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredBackgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *blurredProfileBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *screenNameLabel;
@@ -201,6 +204,8 @@
     self.profileImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.layer.cornerRadius = 5.0f;
+    self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.profileImageView.layer.borderWidth = 2.0f;
     
     [self.profileImageView setImageWithURL:url placeholderImage:placeholder];
 }
@@ -221,7 +226,16 @@
     UIImage *placeholder = [UIImage imageNamed:@"profile"];
     
     self.profileBackgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.profileBackgroundImageView setImageWithURL:url placeholderImage:placeholder];
+    [self.profileBackgroundImageView setImageWithURL:url
+                                    placeholderImage:placeholder
+                                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+        [self.blurredBackgroundImageView setImageToBlur:image
+                                             blurRadius:kLBBlurredImageDefaultBlurRadius
+                                        completionBlock:^(){
+                                            NSLog(@"The blurred image has been set");
+                                        }];
+    }];
+
 }
 
 - (void)setupNameLabel
@@ -239,6 +253,7 @@
     
     self.screenNameLabel.font = [UIFont systemFontOfSize:13.0f];
     self.screenNameLabel.text = [@"@" stringByAppendingString:user.screenName];
+    [self.screenNameLabel sizeToFit];
 }
 
 # pragma UITableViewDataSource methods
@@ -317,7 +332,19 @@
         scale = floorf(scale * 1000) / 1000;
         NSLog(@"scale: %f", scale);
 
-        [self.profileBackgroundImageView setTransform:CGAffineTransformMakeScale(scale, scale)];
+        //[self.profileBackgroundImageView setTransform:CGAffineTransformMakeScale(scale, scale)];
+        self.profileBackgroundImageView.layer.transform = CATransform3DMakeScale(scale, scale, 1);
+        
+        CGFloat alpha;
+        if (offset < -100) {
+            alpha = 0.0f;
+        }
+        else {
+            alpha = (100 + offset) / 100;
+        }
+        NSLog(@"alpha: %f", alpha);
+        
+        self.profileBackgroundImageView.alpha = alpha;
     }
     else {
         // Scroll up as normal

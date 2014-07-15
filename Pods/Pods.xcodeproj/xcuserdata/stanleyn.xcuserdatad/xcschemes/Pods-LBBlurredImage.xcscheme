@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A9CA5605FB9E469EB810F196"
-               BuildableName = "libPods-UIActivityIndicator-for-SDWebImage.a"
-               BlueprintName = "Pods-UIActivityIndicator-for-SDWebImage"
+               BlueprintIdentifier = "0B7A9745D36C4586A384D174"
+               BuildableName = "libPods-LBBlurredImage.a"
+               BlueprintName = "Pods-LBBlurredImage"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

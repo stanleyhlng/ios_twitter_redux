@@ -78,6 +78,12 @@
 #define COCOAPODS_VERSION_MINOR_GSProgressHUD 2
 #define COCOAPODS_VERSION_PATCH_GSProgressHUD 0
 
+// LBBlurredImage
+#define COCOAPODS_POD_AVAILABLE_LBBlurredImage
+#define COCOAPODS_VERSION_MAJOR_LBBlurredImage 0
+#define COCOAPODS_VERSION_MINOR_LBBlurredImage 2
+#define COCOAPODS_VERSION_PATCH_LBBlurredImage 0
+
 // Mantle
 #define COCOAPODS_POD_AVAILABLE_Mantle
 #define COCOAPODS_VERSION_MAJOR_Mantle 1
@@ -114,7 +120,5 @@
 #define COCOAPODS_VERSION_MINOR_UIActivityIndicator_for_SDWebImage 0
 #define COCOAPODS_VERSION_PATCH_UIActivityIndicator_for_SDWebImage 5
 
-// CUSTOM
 #define AMSlideMenuWithoutStoryboards
-
 

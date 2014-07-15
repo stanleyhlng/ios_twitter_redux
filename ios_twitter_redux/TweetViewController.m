@@ -136,6 +136,9 @@
     NSLog(@"handle name label");
     
     User *user = self.tweet.user;
+    if (self.tweet.retweetedStatus != nil) {
+        user = self.tweet.retweetedStatus.user;
+    }
     NSLog(@"user: %@", user);
     
     UserTimelineViewController *vc = [[UserTimelineViewController alloc] init];
