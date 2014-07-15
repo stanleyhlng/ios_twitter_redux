@@ -110,6 +110,7 @@
     
     self.nameLabel.font = [UIFont boldSystemFontOfSize:14.0f];
     self.nameLabel.text = user.name;
+    self.nameLabel.numberOfLines = 1;
     [self.nameLabel sizeToFit];
     
     CGRect frame = self.nameLabel.frame;

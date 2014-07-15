@@ -45,7 +45,6 @@
         
         self.tweets = [[NSMutableArray alloc] initWithCapacity:0];
 
-        /*
         [self getHomeTimelineWithParams:nil success:^(NSArray *tweets) {
             
             self.tweets = [tweets mutableCopy];
@@ -54,7 +53,6 @@
             [self.tableView reloadData];
             
         } failure:nil];
-        */
         
     }
     return self;
@@ -177,7 +175,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+
     // Table View Cell
     UINib *nib = [UINib nibWithNibName:@"TweetTableViewCell" bundle:nil];
     [self.tableView registerNib:nib
@@ -188,8 +186,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //return self.tweets.count;
-    return 10;
+    return self.tweets.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -242,7 +239,7 @@
         
         //c.delegate = self;
         c.index = indexPath.row;
-        //c.tweet = self.tweets[indexPath.row];
+        c.tweet = self.tweets[indexPath.row];
         [c configure];
     }
 }
