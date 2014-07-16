@@ -7,7 +7,7 @@ Build a simple Twitter client that supports HAMBURGER menu.
 
 ## Walkthrough of all user stories
 
-[![image](https://raw.githubusercontent.com/wiki/stanleyhlng/ios_twitter_redux/assets/ios_twitter_redux.gif)](https://raw.githubusercontent.com/wiki/stanleyhlng/ios_twitter/assets/ios_twitter_redux.gif)
+[![image](https://raw.githubusercontent.com/wiki/stanleyhlng/ios_twitter_redux/assets/ios_twitter_redux.gif)](https://raw.githubusercontent.com/wiki/stanleyhlng/ios_twitter_redux/assets/ios_twitter_redux.gif)
 
 ## Completed user stories
 
